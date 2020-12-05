@@ -10,5 +10,7 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.kohsuke', name: 'github-api', version: '1.117'
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    testCompile("org.assertj:assertj-core:3.11.1")
 }

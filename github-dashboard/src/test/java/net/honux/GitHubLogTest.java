@@ -5,17 +5,22 @@ import static org.assertj.core.api.Assertions.*;
 
 class GitHubLogTest {
 
-    private final String ID= "honux77";
-    private final String REPO= "live-study";
     private final int ISSUE = 1;
+    private GitHubLog gh;
+
+    @BeforeEach
+    void setup() {
+        gh = new GitHubLog();
+    }
 
     @Test
     void getIssue() {
-        assertThat(GitHubLog.getIssue(ID, REPO, ISSUE)).isEqualTo("hello");
+        assertThat(gh.getIssue(ISSUE)).isEqualTo("hello, issue!");
     }
 
     @Test
     void findAllIssueCommenter() {
-        assertThat(GitHubLog.getIssue(ID, REPO, ISSUE)).hasSize(1).contains(ID);
+        String user = "honux77";
+        assertThat(gh.findAllIssueCommenter(ISSUE)).hasSize(2).contains(user);
     }
 }

@@ -6,11 +6,12 @@ import static org.assertj.core.api.Assertions.*;
 class GitHubLogTest {
 
     private final int ISSUE = 1;
+    private final String REPO = "honux77/whiteship-live-study";
     private GitHubLog gh;
 
     @BeforeEach
     void setup() {
-        gh = new GitHubLog();
+        gh = new GitHubLog(REPO);
     }
 
     @Test

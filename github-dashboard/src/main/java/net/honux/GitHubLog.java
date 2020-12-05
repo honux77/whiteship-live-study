@@ -4,16 +4,18 @@ import org.kohsuke.github.*;
 
 import javax.print.DocFlavor;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class GitHubLog {
 
-    private static final String REPO= "honux77/whiteship-live-study";
     private GHRepository repo;
 
-    public GitHubLog() {
-        repo = getRepo();
+    /**
+     *
+     * @param repoName id/repo, ex) honux77/whiteship-live-study
+     */
+    public GitHubLog(String repoName) {
+        repo = getRepo(repoName);
     }
 
     public String getIssue(int num) {
@@ -30,22 +32,29 @@ public class GitHubLog {
         List<GHIssueComment> comments = null;
         try {
             comments = repo.getIssue(issueNum).getComments();
-            String[] users = new String[comments.size()];
-            for (int i = 0;i < comments.size(); i++) {
-                users[i] = comments.get(i).getUser().getLogin();
+            Set<String> users = new HashSet<>();
+            for (var comment: comments) {
+                users.add(comment.getUser().getLogin());
             }
-            return users;
+            String ret[] = new String[users.size()];
+
+            int i = 0;
+            for (var user: users) {
+                ret[i++] = user;
+            }
+            return ret;
+
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    private GHRepository getRepo() {
+    private GHRepository getRepo(String repoName) {
         GitHub gh = null;
         try {
             gh = GitHub.connect();
-            return gh.getRepository(REPO);
+            return gh.getRepository(repoName);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

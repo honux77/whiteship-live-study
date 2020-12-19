@@ -40,4 +40,8 @@ class BstMainTest {
         assertThat(tree.dfs()).isEqualTo("425136");
     }
 
+    @Test
+    void bfs() {
+        assertThat(tree.bfs()).isEqualTo("123456");
+    }
 }

@@ -12,9 +12,24 @@ public class BstMain {
         return tree;
     }
     public static void main(String[] args) {
-        System.out.println("Simple Binary [Not Search] Tree");
+        System.out.println("Simple Binary [Not Search] Tree\n");
         var tree = BstMain.initTree();
-        System.out.println("DFS (inorder)");
+
+        System.out.println("BFS");
+        System.out.println(tree.bfs());
+        System.out.println();
+
+        System.out.println("DFS (Inorder)");
         System.out.println(tree.dfs());
+        System.out.println();
+
+        System.out.println("Preorder");
+        System.out.println(tree.preorder());
+        System.out.println();
+
+        System.out.println("Postorder");
+        System.out.println(tree.postorder());
+        System.out.println();
+
     }
 }

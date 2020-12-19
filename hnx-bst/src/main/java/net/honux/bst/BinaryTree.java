@@ -4,6 +4,7 @@ public class BinaryTree <T> {
 
     private Node <T> head;
     private int size;
+    private StringBuffer traveller;
 
     public BinaryTree(T value) {
         this.head = new Node<>(value);
@@ -12,6 +13,19 @@ public class BinaryTree <T> {
 
     public Node<T> getHead() {
         return head;
+    }
+
+    public String dfs() {
+        traveller = new StringBuffer();
+        inorder(head);
+        return traveller.toString();
+    }
+
+    private void inorder(Node<T> node) {
+        if (node == null) return;
+        inorder(node.left());
+        traveller.append(node.getValue());
+        inorder(node.right());
     }
 
     public void addLeft(T value, Node<T> node) {

@@ -24,7 +24,7 @@ public class Node <T>{
         this.value = value;
     }
 
-    public Node getLeft() {
+    public Node left() {
         return left;
     }
 
@@ -32,7 +32,7 @@ public class Node <T>{
         this.left = left;
     }
 
-    public Node getRight() {
+    public Node right() {
         return right;
     }
 
